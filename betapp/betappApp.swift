@@ -1,17 +1,22 @@
 //
-//  betappApp.swift
-//  betapp
+//  swKingApp.swift
+//  swKing
 //
-//  Created by Ilhan on 16/03/2025.
+//  Created by Ilhan on 20/11/2024.
 //
 
 import SwiftUI
 
 @main
 struct betappApp: App {
+    @StateObject private var userManager = UserManager()
+    @StateObject private var betManager = BetManager()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainTabView()
+                .environmentObject(userManager)
+                .environmentObject(betManager)
         }
     }
 }

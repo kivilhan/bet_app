@@ -5,3 +5,37 @@
 //  Created by Ilhan on 19/04/2025.
 //
 
+import SwiftUI
+
+struct BurnView: View {
+    @EnvironmentObject var userManager: UserManager
+    @State private var amountToBurn = ""
+
+    var body: some View {
+        NavigationView {
+            VStack(spacing: 20) {
+                if let user = userManager.currentUser {
+                    Text("🔥 Burned: \(user.totalBurned )")
+                    Text("🏆 Title: \(user.rank)")
+
+                    TextField("Amount to burn", text: $amountToBurn)
+                        .keyboardType(.numberPad)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+
+                    Button("Burn") {
+                        Task {
+                            if let amount = Int(amountToBurn) {
+                                _ = await userManager.burnBetbucks(amount)
+                            }
+                        }
+                    }
+                } else {
+                    ProgressView("Loading user...")
+                }
+            }
+            .padding()
+            .navigationTitle("Burn")
+        }
+    }
+}
