@@ -30,8 +30,8 @@ struct Bet: Identifiable, Codable {
     let resolvedOption: String
     let creatorName: String
     let creatorId: String
-    let tags: [String]
-    let participants: [BetParticipant]
+    var tags: [String]
+    var participants: [BetParticipant]
 
     var potSize: Int {
         participants.reduce(0) { $0 + $1.amount }
