@@ -18,12 +18,13 @@ struct BetParticipant: Codable {
     let playerId: String
     let username: String
     let amount: Int
+    let position: String
 }
 
 struct Bet: Identifiable, Codable {
     let id: String
     let title: String
-    let status: EventStatus
+    let status: BetStatus
     let options: [String]
     let bettingEnds: Date
     let resolvedOption: String
@@ -36,35 +37,18 @@ struct Bet: Identifiable, Codable {
         participants.reduce(0) { $0 + $1.amount }
     }
 
-    // Optional convenience initializer from [String: Any]
-    init?(from dict: [String: Any]) {
-        guard
-            let id = dict["id"] as? String,
-            let title = dict["title"] as? String,
-            let statusRaw = dict["status"] as? String,
-            let status = EventStatus(rawValue: statusRaw),
-            let options = dict["options"] as? [String],
-            let bettingEnds = dict["bettingEnds"] as? Date,
-            let resolvedOption = dict["resolvedOption"] as? String,
-            let creatorName = dict["creatorName"] as? String,
-            let creatorId = dict["creatorId"] as? String,
-            let tags = dict["tags"] as? [String],
-            let participantDicts = dict["participants"] as? [[String: Any]]
-        else {
-            return nil
-        }
-
-        let participants = participantDicts.compactMap { entry -> BetParticipant? in
-            guard
-                let playerId = entry["playerId"] as? String,
-                let username = entry["username"] as? String,
-                let amount = entry["amount"] as? Int
-            else {
-                return nil
-            }
-            return BetParticipant(playerId: playerId, username: username, amount: amount)
-        }
-
+    init(
+        id: String,
+        title: String,
+        status: BetStatus,
+        options: [String],
+        bettingEnds: Date,
+        resolvedOption: String,
+        creatorName: String,
+        creatorId: String,
+        tags: [String],
+        participants: [BetParticipant]
+    ) {
         self.id = id
         self.title = title
         self.status = status
@@ -77,4 +61,3 @@ struct Bet: Identifiable, Codable {
         self.participants = participants
     }
 }
-

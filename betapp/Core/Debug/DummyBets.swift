@@ -22,8 +22,16 @@ struct DummyBets {
             creatorId: "d11223ba-5c4e-4a1e-b1b6-f89d781ee5a3",
             tags: ["sports", "football", "world cup"],
             participants: [
-                BetParticipant(playerId: "eefce2f5-3c82-4036-9ff8-24496cf7759d", username: "jamielee", amount: 100),
-                BetParticipant(playerId: "3346c053-df38-4d5a-a297-4b6a6c9c20e0", username: "samriv", amount: 300)
+                BetParticipant(
+                    playerId: "eefce2f5-3c82-4036-9ff8-24496cf7759d",
+                    username: "jamielee",
+                    amount: 100,
+                    position: "Brazil"),
+                BetParticipant(
+                    playerId: "3346c053-df38-4d5a-a297-4b6a6c9c20e0",
+                    username: "samriv",
+                    amount: 300,
+                    position: "Germany")
             ]
         ),
         Bet(
@@ -37,7 +45,11 @@ struct DummyBets {
             creatorId: "eefce2f5-3c82-4036-9ff8-24496cf7759d",
             tags: ["weather", "UK", "daily"],
             participants: [
-                BetParticipant(playerId: "d11223ba-5c4e-4a1e-b1b6-f89d781ee5a3", username: "alexj", amount: 200)
+                BetParticipant(
+                    playerId: "d11223ba-5c4e-4a1e-b1b6-f89d781ee5a3",
+                    username: "alexj",
+                    amount: 200,
+                    position: "Yes")
             ]
         ),
         Bet(
@@ -51,8 +63,16 @@ struct DummyBets {
             creatorId: "3346c053-df38-4d5a-a297-4b6a6c9c20e0",
             tags: ["sports", "basketball", "NBA"],
             participants: [
-                BetParticipant(playerId: "d11223ba-5c4e-4a1e-b1b6-f89d781ee5a3", username: "alexj", amount: 150),
-                BetParticipant(playerId: "eefce2f5-3c82-4036-9ff8-24496cf7759d", username: "jamielee", amount: 250)
+                BetParticipant(
+                    playerId: "d11223ba-5c4e-4a1e-b1b6-f89d781ee5a3",
+                    username: "alexj",
+                    amount: 150,
+                    position: "Warriors"),
+                BetParticipant(
+                    playerId: "eefce2f5-3c82-4036-9ff8-24496cf7759d",
+                    username: "jamielee",
+                    amount: 250,
+                    position: "Lakers")
             ]
         )
     ]
