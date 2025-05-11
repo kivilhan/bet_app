@@ -14,7 +14,7 @@ struct BurnView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                if let user = userManager.currentUser {
+                if let user = authManager.guessioUser {
                     Text("🔥 Burned: \(user.totalBurned )")
                     Text("🏆 Title: \(user.rank)")
 
@@ -26,7 +26,11 @@ struct BurnView: View {
                     Button("Burn") {
                         Task {
                             if let amount = Int(amountToBurn) {
-                                _ = await userManager.burnBetbucks(amount)
+                                do {
+                                    try await authManager.burnBetbucks(amount)
+                                } catch {
+                                    print("Failed to burn betbucks: \(error.localizedDescription)")
+                                }
                             }
                         }
                     }

@@ -13,7 +13,7 @@ struct ProfileView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                if let user = authManager.currentUser {
+                if let user = authManager.guessioUser {
                     Text("👤 Username: \(user.username)")
                     Text("🏆 Title: \(user.rank)")
                     Text("💰 Betbucks: \(user.betbucks)")
@@ -23,8 +23,12 @@ struct ProfileView: View {
                 }
 
                 Button(role: .destructive) {
-                    Task {
-                        await authViewModel.signOut()
+                    Task {    do {
+                        try await authManager.signOut()
+                    } catch {
+                        print("Sign-out failed: \(error.localizedDescription)")
+                        // Optionally show an error message in the UI
+                    }
                     }
                 } label: {
                     Text("Log Out")
