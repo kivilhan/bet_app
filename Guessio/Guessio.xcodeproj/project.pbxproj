@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		896E378A2DCF9B5C003208FF /* Guessio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guessio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		89E7A56A2DCFE0BE000865E7 /* Guessio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guessio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		896E378C2DCF9B5C003208FF /* Guessio */ = {
+		89E7A56C2DCFE0BE000865E7 /* Guessio */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Guessio;
 			sourceTree = "<group>";
@@ -19,7 +19,7 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		896E37872DCF9B5C003208FF /* Frameworks */ = {
+		89E7A5672DCFE0BE000865E7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		896E37812DCF9B5C003208FF = {
+		89E7A5612DCFE0BE000865E7 = {
 			isa = PBXGroup;
 			children = (
-				896E378C2DCF9B5C003208FF /* Guessio */,
-				896E378B2DCF9B5C003208FF /* Products */,
+				89E7A56C2DCFE0BE000865E7 /* Guessio */,
+				89E7A56B2DCFE0BE000865E7 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		896E378B2DCF9B5C003208FF /* Products */ = {
+		89E7A56B2DCFE0BE000865E7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				896E378A2DCF9B5C003208FF /* Guessio.app */,
+				89E7A56A2DCFE0BE000865E7 /* Guessio.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,64 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		896E37892DCF9B5C003208FF /* Guessio */ = {
+		89E7A5692DCFE0BE000865E7 /* Guessio */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 896E37982DCF9B5E003208FF /* Build configuration list for PBXNativeTarget "Guessio" */;
+			buildConfigurationList = 89E7A5782DCFE0BF000865E7 /* Build configuration list for PBXNativeTarget "Guessio" */;
 			buildPhases = (
-				896E37862DCF9B5C003208FF /* Sources */,
-				896E37872DCF9B5C003208FF /* Frameworks */,
-				896E37882DCF9B5C003208FF /* Resources */,
+				89E7A5662DCFE0BE000865E7 /* Sources */,
+				89E7A5672DCFE0BE000865E7 /* Frameworks */,
+				89E7A5682DCFE0BE000865E7 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				896E378C2DCF9B5C003208FF /* Guessio */,
+				89E7A56C2DCFE0BE000865E7 /* Guessio */,
 			);
 			name = Guessio;
 			packageProductDependencies = (
 			);
 			productName = Guessio;
-			productReference = 896E378A2DCF9B5C003208FF /* Guessio.app */;
+			productReference = 89E7A56A2DCFE0BE000865E7 /* Guessio.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		896E37822DCF9B5C003208FF /* Project object */ = {
+		89E7A5622DCFE0BE000865E7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
-					896E37892DCF9B5C003208FF = {
+					89E7A5692DCFE0BE000865E7 = {
 						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
-			buildConfigurationList = 896E37852DCF9B5C003208FF /* Build configuration list for PBXProject "Guessio" */;
+			buildConfigurationList = 89E7A5652DCFE0BE000865E7 /* Build configuration list for PBXProject "Guessio" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 896E37812DCF9B5C003208FF;
+			mainGroup = 89E7A5612DCFE0BE000865E7;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 896E378B2DCF9B5C003208FF /* Products */;
+			productRefGroup = 89E7A56B2DCFE0BE000865E7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				896E37892DCF9B5C003208FF /* Guessio */,
+				89E7A5692DCFE0BE000865E7 /* Guessio */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		896E37882DCF9B5C003208FF /* Resources */ = {
+		89E7A5682DCFE0BE000865E7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		896E37862DCF9B5C003208FF /* Sources */ = {
+		89E7A5662DCFE0BE000865E7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		896E37962DCF9B5E003208FF /* Debug */ = {
+		89E7A5762DCFE0BF000865E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -188,7 +188,7 @@
 			};
 			name = Debug;
 		};
-		896E37972DCF9B5E003208FF /* Release */ = {
+		89E7A5772DCFE0BF000865E7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -244,7 +244,7 @@
 			};
 			name = Release;
 		};
-		896E37992DCF9B5E003208FF /* Debug */ = {
+		89E7A5792DCFE0BF000865E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -273,7 +273,7 @@
 			};
 			name = Debug;
 		};
-		896E379A2DCF9B5E003208FF /* Release */ = {
+		89E7A57A2DCFE0BF000865E7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -305,25 +305,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		896E37852DCF9B5C003208FF /* Build configuration list for PBXProject "Guessio" */ = {
+		89E7A5652DCFE0BE000865E7 /* Build configuration list for PBXProject "Guessio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				896E37962DCF9B5E003208FF /* Debug */,
-				896E37972DCF9B5E003208FF /* Release */,
+				89E7A5762DCFE0BF000865E7 /* Debug */,
+				89E7A5772DCFE0BF000865E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		896E37982DCF9B5E003208FF /* Build configuration list for PBXNativeTarget "Guessio" */ = {
+		89E7A5782DCFE0BF000865E7 /* Build configuration list for PBXNativeTarget "Guessio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				896E37992DCF9B5E003208FF /* Debug */,
-				896E379A2DCF9B5E003208FF /* Release */,
+				89E7A5792DCFE0BF000865E7 /* Debug */,
+				89E7A57A2DCFE0BF000865E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 896E37822DCF9B5C003208FF /* Project object */;
+	rootObject = 89E7A5622DCFE0BE000865E7 /* Project object */;
 }

@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 final class UserManager: ObservableObject {
-    @Published private(set) var currentUser: User?
+    @Published private(set) var currentUser: GuessioUser?
 
     init() {
         Task {
@@ -22,7 +22,7 @@ final class UserManager: ObservableObject {
         if var user = await fetchUserFromBackend() {
             currentUser = user
         } else {
-            let newUser = User(
+            let newUser = GuessioUser(
                 id: UUID().uuidString,
                 username: "guest",
                 betbucks: 1000,
@@ -42,12 +42,12 @@ final class UserManager: ObservableObject {
         return true
     }
 
-    private func fetchUserFromBackend() async -> User? {
+    private func fetchUserFromBackend() async -> GuessioUser? {
         // Simulate async fetch from Firestore or local DB
         return nil
     }
 
-    private func saveUserToBackend(_ user: User) async {
+    private func saveUserToBackend(_ user: GuessioUser) async {
         // Simulate async save
     }
 }

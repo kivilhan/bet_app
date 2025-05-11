@@ -7,133 +7,143 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		893403872D86ED7E00F2BAE6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 893403862D86ED7E00F2BAE6 /* FirebaseAnalytics */; };
-		893403892D86ED7E00F2BAE6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 893403882D86ED7E00F2BAE6 /* FirebaseAuth */; };
-		8934038B2D86ED7E00F2BAE6 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8934038A2D86ED7E00F2BAE6 /* FirebaseCore */; };
-		8934038D2D86ED7E00F2BAE6 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8934038C2D86ED7E00F2BAE6 /* FirebaseCrashlytics */; };
-		8934038F2D86ED7E00F2BAE6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8934038E2D86ED7E00F2BAE6 /* FirebaseFirestore */; };
-		893403A02D86EEA500F2BAE6 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 8934039F2D86EEA500F2BAE6 /* GoogleSignIn */; };
-		893403A22D86EEA500F2BAE6 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 893403A12D86EEA500F2BAE6 /* GoogleSignInSwift */; };
+		892C8DA02DCFB8930083A3A1 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 892C8D9F2DCFB8930083A3A1 /* FacebookLogin */; };
+		89B9E8CE2DCFB6DF00A6EDDE /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 89B9E8CD2DCFB6DF00A6EDDE /* GoogleSignIn */; };
+		89B9E8D02DCFB6DF00A6EDDE /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 89B9E8CF2DCFB6DF00A6EDDE /* GoogleSignInSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		89C6B2912D86EC3A003C6647 /* betapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = betapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C2D2AB2FDEF3955E2E34C3D /* Pods-Guessio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guessio.debug.xcconfig"; path = "Target Support Files/Pods-Guessio/Pods-Guessio.debug.xcconfig"; sourceTree = "<group>"; };
+		896E378A2DCF9B5C003208FF /* Guessio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guessio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B704FFB8AF6BB3A1EE0B5348 /* Pods-Guessio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guessio.release.xcconfig"; path = "Target Support Files/Pods-Guessio/Pods-Guessio.release.xcconfig"; sourceTree = "<group>"; };
+		E05D26C3BFA76B12861F174A /* Pods_Guessio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Guessio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		89C6B2932D86EC3A003C6647 /* betapp */ = {
+		896E378C2DCF9B5C003208FF /* Guessio */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = betapp;
+			path = Guessio;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		89C6B28E2D86EC3A003C6647 /* Frameworks */ = {
+		896E37872DCF9B5C003208FF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				893403872D86ED7E00F2BAE6 /* FirebaseAnalytics in Frameworks */,
-				8934038D2D86ED7E00F2BAE6 /* FirebaseCrashlytics in Frameworks */,
-				893403A22D86EEA500F2BAE6 /* GoogleSignInSwift in Frameworks */,
-				8934038B2D86ED7E00F2BAE6 /* FirebaseCore in Frameworks */,
-				8934038F2D86ED7E00F2BAE6 /* FirebaseFirestore in Frameworks */,
-				893403892D86ED7E00F2BAE6 /* FirebaseAuth in Frameworks */,
-				893403A02D86EEA500F2BAE6 /* GoogleSignIn in Frameworks */,
+				89B9E8D02DCFB6DF00A6EDDE /* GoogleSignInSwift in Frameworks */,
+				892C8DA02DCFB8930083A3A1 /* FacebookLogin in Frameworks */,
+				89B9E8CE2DCFB6DF00A6EDDE /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		89C6B2882D86EC3A003C6647 = {
+		367E4A04ED7CA12CD5E3406C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				89C6B2932D86EC3A003C6647 /* betapp */,
-				89C6B2922D86EC3A003C6647 /* Products */,
+				E05D26C3BFA76B12861F174A /* Pods_Guessio.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		896E37812DCF9B5C003208FF = {
+			isa = PBXGroup;
+			children = (
+				896E378C2DCF9B5C003208FF /* Guessio */,
+				896E378B2DCF9B5C003208FF /* Products */,
+				A0EF7B2854E1EB1F157A939E /* Pods */,
+				367E4A04ED7CA12CD5E3406C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		89C6B2922D86EC3A003C6647 /* Products */ = {
+		896E378B2DCF9B5C003208FF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				89C6B2912D86EC3A003C6647 /* betapp.app */,
+				896E378A2DCF9B5C003208FF /* Guessio.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A0EF7B2854E1EB1F157A939E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4C2D2AB2FDEF3955E2E34C3D /* Pods-Guessio.debug.xcconfig */,
+				B704FFB8AF6BB3A1EE0B5348 /* Pods-Guessio.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		89C6B2902D86EC3A003C6647 /* betapp */ = {
+		896E37892DCF9B5C003208FF /* Guessio */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 89C6B29F2D86EC3C003C6647 /* Build configuration list for PBXNativeTarget "betapp" */;
+			buildConfigurationList = 896E37982DCF9B5E003208FF /* Build configuration list for PBXNativeTarget "Guessio" */;
 			buildPhases = (
-				89C6B28D2D86EC3A003C6647 /* Sources */,
-				89C6B28E2D86EC3A003C6647 /* Frameworks */,
-				89C6B28F2D86EC3A003C6647 /* Resources */,
+				896E37862DCF9B5C003208FF /* Sources */,
+				896E37872DCF9B5C003208FF /* Frameworks */,
+				896E37882DCF9B5C003208FF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				89C6B2932D86EC3A003C6647 /* betapp */,
+				896E378C2DCF9B5C003208FF /* Guessio */,
 			);
-			name = betapp;
+			name = Guessio;
 			packageProductDependencies = (
-				893403862D86ED7E00F2BAE6 /* FirebaseAnalytics */,
-				893403882D86ED7E00F2BAE6 /* FirebaseAuth */,
-				8934038A2D86ED7E00F2BAE6 /* FirebaseCore */,
-				8934038C2D86ED7E00F2BAE6 /* FirebaseCrashlytics */,
-				8934038E2D86ED7E00F2BAE6 /* FirebaseFirestore */,
-				8934039F2D86EEA500F2BAE6 /* GoogleSignIn */,
-				893403A12D86EEA500F2BAE6 /* GoogleSignInSwift */,
+				89B9E8CD2DCFB6DF00A6EDDE /* GoogleSignIn */,
+				89B9E8CF2DCFB6DF00A6EDDE /* GoogleSignInSwift */,
+				892C8D9F2DCFB8930083A3A1 /* FacebookLogin */,
 			);
-			productName = betapp;
-			productReference = 89C6B2912D86EC3A003C6647 /* betapp.app */;
+			productName = Guessio;
+			productReference = 896E378A2DCF9B5C003208FF /* Guessio.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		89C6B2892D86EC3A003C6647 /* Project object */ = {
+		896E37822DCF9B5C003208FF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
-					89C6B2902D86EC3A003C6647 = {
+					896E37892DCF9B5C003208FF = {
 						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
-			buildConfigurationList = 89C6B28C2D86EC3A003C6647 /* Build configuration list for PBXProject "betapp" */;
+			buildConfigurationList = 896E37852DCF9B5C003208FF /* Build configuration list for PBXProject "Guessio" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 89C6B2882D86EC3A003C6647;
+			mainGroup = 896E37812DCF9B5C003208FF;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				893403852D86ED7E00F2BAE6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				8934039E2D86EEA500F2BAE6 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				89B9E8CC2DCFB6DF00A6EDDE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				892C8D9E2DCFB8930083A3A1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 89C6B2922D86EC3A003C6647 /* Products */;
+			productRefGroup = 896E378B2DCF9B5C003208FF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				89C6B2902D86EC3A003C6647 /* betapp */,
+				896E37892DCF9B5C003208FF /* Guessio */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		89C6B28F2D86EC3A003C6647 /* Resources */ = {
+		896E37882DCF9B5C003208FF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -143,7 +153,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		89C6B28D2D86EC3A003C6647 /* Sources */ = {
+		896E37862DCF9B5C003208FF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -153,7 +163,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		89C6B29D2D86EC3C003C6647 /* Debug */ = {
+		896E37962DCF9B5E003208FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -216,7 +226,7 @@
 			};
 			name = Debug;
 		};
-		89C6B29E2D86EC3C003C6647 /* Release */ = {
+		896E37972DCF9B5E003208FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -272,28 +282,30 @@
 			};
 			name = Release;
 		};
-		89C6B2A02D86EC3C003C6647 /* Debug */ = {
+		896E37992DCF9B5E003208FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Guessio/Guessio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"betapp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Guessio/Preview Content\"";
 				DEVELOPMENT_TEAM = KNV6M6JFU7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Guessio;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.simpleWare.betapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.simpleware.guessio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -301,28 +313,30 @@
 			};
 			name = Debug;
 		};
-		89C6B2A12D86EC3C003C6647 /* Release */ = {
+		896E379A2DCF9B5E003208FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Guessio/Guessio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"betapp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Guessio/Preview Content\"";
 				DEVELOPMENT_TEAM = KNV6M6JFU7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Guessio;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.simpleWare.betapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.simpleware.guessio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -333,20 +347,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		89C6B28C2D86EC3A003C6647 /* Build configuration list for PBXProject "betapp" */ = {
+		896E37852DCF9B5C003208FF /* Build configuration list for PBXProject "Guessio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				89C6B29D2D86EC3C003C6647 /* Debug */,
-				89C6B29E2D86EC3C003C6647 /* Release */,
+				896E37962DCF9B5E003208FF /* Debug */,
+				896E37972DCF9B5E003208FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		89C6B29F2D86EC3C003C6647 /* Build configuration list for PBXNativeTarget "betapp" */ = {
+		896E37982DCF9B5E003208FF /* Build configuration list for PBXNativeTarget "Guessio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				89C6B2A02D86EC3C003C6647 /* Debug */,
-				89C6B2A12D86EC3C003C6647 /* Release */,
+				896E37992DCF9B5E003208FF /* Debug */,
+				896E379A2DCF9B5E003208FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -354,15 +368,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		893403852D86ED7E00F2BAE6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		892C8D9E2DCFB8930083A3A1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 11.9.0;
+				minimumVersion = 14.1.0;
 			};
 		};
-		8934039E2D86EEA500F2BAE6 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+		89B9E8CC2DCFB6DF00A6EDDE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
 			requirement = {
@@ -373,42 +387,22 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		893403862D86ED7E00F2BAE6 /* FirebaseAnalytics */ = {
+		892C8D9F2DCFB8930083A3A1 /* FacebookLogin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 893403852D86ED7E00F2BAE6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
+			package = 892C8D9E2DCFB8930083A3A1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
 		};
-		893403882D86ED7E00F2BAE6 /* FirebaseAuth */ = {
+		89B9E8CD2DCFB6DF00A6EDDE /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 893403852D86ED7E00F2BAE6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		8934038A2D86ED7E00F2BAE6 /* FirebaseCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 893403852D86ED7E00F2BAE6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCore;
-		};
-		8934038C2D86ED7E00F2BAE6 /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 893403852D86ED7E00F2BAE6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
-		8934038E2D86ED7E00F2BAE6 /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 893403852D86ED7E00F2BAE6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		8934039F2D86EEA500F2BAE6 /* GoogleSignIn */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8934039E2D86EEA500F2BAE6 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			package = 89B9E8CC2DCFB6DF00A6EDDE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignIn;
 		};
-		893403A12D86EEA500F2BAE6 /* GoogleSignInSwift */ = {
+		89B9E8CF2DCFB6DF00A6EDDE /* GoogleSignInSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8934039E2D86EEA500F2BAE6 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			package = 89B9E8CC2DCFB6DF00A6EDDE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 89C6B2892D86EC3A003C6647 /* Project object */;
+	rootObject = 896E37822DCF9B5C003208FF /* Project object */;
 }

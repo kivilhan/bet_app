@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  GuessioUser.swift
 //  betapp
 //
 //  Created by Ilhan on 16/04/2025.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Identifiable {
+struct GuessioUser: Identifiable {
     var id: String
     var username: String
     var betbucks: Int
@@ -17,4 +17,5 @@ struct User: Identifiable {
         LadderRank.rank(for: totalBurned)
     }
 }
+
 
