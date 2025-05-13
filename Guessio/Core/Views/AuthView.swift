@@ -45,8 +45,7 @@ struct AuthView: View {
                     Task { await viewModel.signInWithGoogle() }
                 }) {
                     HStack {
-                        Image("googleLogo")  // assuming you have a Google logo asset
-                            .resizable().frame(width: 20, height: 20)
+                        Label("Sign in", systemImage: "globe")
                         Text("Sign in with Google")
                             .fontWeight(.medium)
                             .frame(maxWidth: .infinity)
@@ -64,8 +63,7 @@ struct AuthView: View {
                     Task { await viewModel.signInWithFacebook() }
                 }) {
                     HStack {
-                        Image("facebookLogo")  // assuming you have a Facebook logo asset
-                            .resizable().frame(width: 20, height: 20)
+                        Label("Sign in", systemImage: "globe")  // assuming you have a Facebook logo asset
                         Text("Sign in with Facebook")
                             .fontWeight(.medium)
                             .frame(maxWidth: .infinity)

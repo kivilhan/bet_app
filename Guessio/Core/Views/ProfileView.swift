@@ -41,6 +41,42 @@ struct ProfileView: View {
                 .padding(.horizontal)
             }
             .navigationTitle("Profile")
+            .overlay(firebaseAndGuessioUserOverlay)
+        }
+    }
+    private var firebaseAndGuessioUserOverlay: some View {
+        // paste the VStack block here
+        VStack(alignment: .leading, spacing: 8) {
+            // Firebase User Info
+            Text("🔥 Firebase User:")
+                .font(.headline)
+            if let firebaseUser = authManager.firebaseUser {
+                Text("UID: \(firebaseUser.uid)")
+                Text("Email: \(firebaseUser.email ?? "nil")")
+                Text("Display Name: \(firebaseUser.displayName ?? "nil")")
+                Text("Is Anonymous: \(firebaseUser.isAnonymous.description)")
+            } else {
+                Text("Not signed in")
+            }
+
+            Divider()
+
+            // Guessio User Info
+            Text("🎯 Guessio User:")
+                .font(.headline)
+            if let guessioUser = authManager.guessioUser {
+                Text("ID: \(guessioUser.id)")
+                Text("Username: \(guessioUser.username)")
+                Text("Betbucks: \(guessioUser.betbucks)")
+                Text("Total Burned: \(guessioUser.totalBurned)")
+                if let lastClaimDate = guessioUser.lastClaimDate {
+                    Text("Last Claim: \(lastClaimDate.description)")
+                } else {
+                    Text("Last Claim: nil")
+                }
+            } else {
+                Text("No Guessio user loaded")
+            }
         }
     }
 }
