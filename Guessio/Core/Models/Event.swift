@@ -1,45 +1,54 @@
-//
-//  Event.swift
-//  betapp
-//
-//  Created by Ilhan on 16/04/2025.
-//
-
 import Foundation
 
-struct Event: Identifiable {
-    var id: String
-    var title: String
+struct Event: Identifiable, Codable {
+    let id: String
+    let title: String
+    let createdById: String
+    let options: [String]
+    let createdAt: Date
+    var resolvedAt: Date?
+    var winningOption: String?
     var status: EventStatus
 
-    init(id: String, title: String, status: EventStatus) {
-        self.id = id
-        self.title = title
-        self.status = status
-    }
 
-    init?(documentID: String, data: [String: Any]) {
-        guard
-            let title = data["title"] as? String,
-            let statusString = data["status"] as? String,
-            let status = EventStatus(rawValue: statusString)
-        else {
-            return nil
-        }
-        self.id = documentID
+    init(
+        title: String,
+        createdById: String,
+        options: [String]
+    ) {
+        self.id = UUID().uuidString
         self.title = title
-        self.status = status
+        self.createdById = createdById
+        self.options = options
+        self.createdAt = Date()
+        self.status = .takingBets
+        self.resolvedAt = nil
+        self.winningOption = nil
     }
 
     var asDictionary: [String: Any] {
-        return [
+        var dict: [String: Any] = [
+            "id": id,
             "title": title,
+            "createdById": createdById,
+            "options": options,
+            "createdAt": createdAt,
             "status": status.rawValue
         ]
+
+        if let resolvedAt = resolvedAt {
+            dict["resolvedAt"] = resolvedAt
+        }
+
+        if let winningOption = winningOption {
+            dict["winningOption"] = winningOption
+        }
+
+        return dict
     }
 }
 
-enum EventStatus: String {
+enum EventStatus: String, Codable, CaseIterable {
     case takingBets
     case betsClosed
     case resolved

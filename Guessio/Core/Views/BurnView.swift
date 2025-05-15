@@ -1,21 +1,16 @@
-//
-//  MainTabView.swift
-//  betapp
-//
-//  Created by Ilhan on 19/04/2025.
-//
-
 import SwiftUI
 
 struct BurnView: View {
+    @EnvironmentObject var eventManager: EventManager
     @EnvironmentObject var authManager: AuthManager
     @State private var amountToBurn = ""
+    @State private var burnStatus: String?
 
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
                 if let user = authManager.guessioUser {
-                    Text("🔥 Burned: \(user.totalBurned )")
+                    Text("🔥 Burned: \(user.totalBurned)")
                     Text("🏆 Title: \(user.rank)")
 
                     TextField("Amount to burn", text: $amountToBurn)
@@ -25,14 +20,24 @@ struct BurnView: View {
 
                     Button("Burn") {
                         Task {
-                            if let amount = Int(amountToBurn) {
-                                do {
-                                    try await authManager.burnBetbucks(amount)
-                                } catch {
-                                    print("Failed to burn betbucks: \(error.localizedDescription)")
-                                }
+                            guard let amount = Int(amountToBurn),
+                                  let userId = authManager.firebaseUser?.uid else {
+                                burnStatus = "Invalid input or user not loaded."
+                                return
                             }
+
+                            let success = await eventManager.burnBetbucks(from: userId, amount: amount)
+                            burnStatus = success ? "🔥 Burned \(amount) betbucks!" : "⚠️ Could not burn betbucks."
+
+                            amountToBurn = ""
                         }
+                    }
+                    .buttonStyle(.borderedProminent)
+
+                    if let burnStatus {
+                        Text(burnStatus)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
                     }
                 } else {
                     ProgressView("Loading user...")

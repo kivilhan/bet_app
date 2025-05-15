@@ -11,9 +11,13 @@ import UIKit
 
 @MainActor
 final class AuthManager: NSObject, ObservableObject {
-    let db = Firestore.firestore()
     static let shared = AuthManager()
+
+    let db = Firestore.firestore()
+
+    private var userListener: ListenerRegistration?
     private var currentNonce: String?
+
     @Published private(set) var authState: AuthState = .unauthenticated
     @Published private(set) var firebaseUser: User?
     @Published private(set) var guessioUser: GuessioUser?
@@ -182,6 +186,7 @@ extension AuthManager: ASAuthorizationControllerDelegate, ASAuthorizationControl
     }
 }
 
+// MARK: - Local User Operations
 extension AuthManager {
     /// Fetches the user document from Firestore or creates it if it doesn't exist.
     private func checkOrCreateUserDocument(for user: User) async throws {
@@ -198,11 +203,20 @@ extension AuthManager {
                 username: user.displayName ?? "guest",
                 lastClaimDate: nil,
                 betbucks: 1000,
-                totalBurned: 0
+                totalBurned: 0,
+                initialized: false
             )
             try docRef.setData(from: newUser)
             self.guessioUser = newUser
         }
+    }
+
+    func updateDisplayName(to name: String) async throws {
+        guard var user = guessioUser else { return }
+        user.username = name
+        user.initialized = true
+        user.lastClaimDate = Date()
+        try await updateUserInFirestore(user)
     }
 
     /// Updates the current user in Firestore (and in memory).
@@ -212,15 +226,56 @@ extension AuthManager {
         self.guessioUser = updatedUser
     }
 
-    /// Deducts betbucks from the current user and updates Firestore.
-    func burnBetbucks(_ amount: Int) async throws {
-        guard var user = guessioUser, user.betbucks >= amount else {
-            throw NSError(domain: "Not enough betbucks", code: 1)
-        }
+    func startUserListener(userId: String) {
+        stopUserListener()
 
-        user.betbucks -= amount
-        user.totalBurned += amount
-        try await updateUserInFirestore(user)
+        let userRef = db.collection("users").document(userId)
+        userListener = userRef.addSnapshotListener { [weak self] snapshot, error in
+            guard let self = self else { return }
+
+            if let error = error {
+                print("User listener error: \(error.localizedDescription)")
+                return
+            }
+
+            guard let data = snapshot?.data() else {
+                print("No user data found.")
+                return
+            }
+
+            do {
+                let json = try JSONSerialization.data(withJSONObject: data)
+                let user = try JSONDecoder().decode(GuessioUser.self, from: json)
+                Task { @MainActor in
+                    self.guessioUser = user
+                }
+            } catch {
+                print("Failed to decode user: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    func stopUserListener() {
+        userListener?.remove()
+        userListener = nil
+    }
+
+    // MARK: - Example Login Handler
+    func handleLogin(for user: User) async {
+        self.firebaseUser = user
+        self.startUserListener(userId: user.uid)
+    }
+
+    // MARK: - Logout
+    func logout() async {
+        do {
+            try Auth.auth().signOut()
+            firebaseUser = nil
+            guessioUser = nil
+            stopUserListener()
+        } catch {
+            print("Logout error: \(error.localizedDescription)")
+        }
     }
 }
 

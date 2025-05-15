@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainTabView: View {
     @EnvironmentObject var authManager: AuthManager
-    @EnvironmentObject var betManager: BetManager
+    @EnvironmentObject var eventManager: EventManager
 
     var body: some View {
         TabView {
@@ -34,7 +34,7 @@ struct MainTabView: View {
                 }
         }
         .environmentObject(authManager)
-        .environmentObject(betManager)
+        .environmentObject(eventManager)
     }
 }
 
@@ -42,6 +42,6 @@ struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
         MainTabView()
             .environmentObject(AuthManager())
-            .environmentObject(BetManager())
+            .environmentObject(EventManager())
     }
 }

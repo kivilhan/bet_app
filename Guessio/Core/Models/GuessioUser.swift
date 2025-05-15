@@ -16,4 +16,5 @@ struct GuessioUser: Identifiable, Decodable, Encodable {
     var rank: LadderRank {
         LadderRank.rank(for: totalBurned)
     }
+    var initialized: Bool = false
 }
