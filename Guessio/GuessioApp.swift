@@ -1,10 +1,3 @@
-//
-//  GuessioApp.swift
-//  Guessio
-//
-//  Created by Ilhan on 10/05/2025.
-//
-
 import SwiftUI
 import FirebaseCore
 import FirebaseFirestore
@@ -14,9 +7,7 @@ import FirebaseAuth
 struct GuessioApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
-    @StateObject private var authViewModel = AuthViewModel()
-    @StateObject private var authManager = AuthManager()
-    @StateObject private var eventManager = EventManager()
+    @StateObject private var appManager = AppManager()
 
     init() {
         FirebaseApp.configure()
@@ -33,16 +24,18 @@ struct GuessioApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView()
-                .environmentObject(authViewModel)
-                .environmentObject(authManager)
-                .environmentObject(eventManager)
-                .fullScreenCover(isPresented: .constant(authManager.authState == .unauthenticated)) {
+                .fullScreenCover(isPresented: .constant(appManager.authState == .unauthenticated)) {
                     AuthView()
-                        .environmentObject(authViewModel)
+                        .environmentObject(AuthViewModel())
                 }
-                .fullScreenCover(isPresented: .constant(authManager.guessioUser?.initialized == false)) {
+                .fullScreenCover(isPresented: .constant(appManager.guessioUser?.initialized == false)) {
                     SetupDisplayNameView()
                 }
         }
     }
+}
+
+#Preview {
+    MainTabView()
+        .environmentObject(AppManager.shared) // ✅ Use the singleton instance
 }

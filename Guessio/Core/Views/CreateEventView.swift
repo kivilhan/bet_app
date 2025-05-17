@@ -1,54 +1,33 @@
 import SwiftUI
 
 struct CreateEventView: View {
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var app: AppManager
     @StateObject private var viewModel = CreateEventViewModel()
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Create a New Event")
-                .font(.title2).bold()
+        Form {
+            Section(header: Text("Event Title")) {
+                TextField("Enter title", text: $viewModel.title)
+            }
 
-            TextField("Title", text: $viewModel.title)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            Section(header: Text("Options")) {
+                TextField("Comma-separated options", text: $viewModel.optionsText)
+            }
 
-            TextField("Options (comma-separated)", text: $viewModel.optionsText)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            Button("Submit Event") {
+                if let userId = app.firebaseUser?.uid {
+                    viewModel.submitEvent(for: userId) { success in
+                        if success { dismiss() }
+                    }
+                }
+            }
+            .disabled(viewModel.isSubmitting)
 
             if let error = viewModel.errorMessage {
-                Text(error)
-                    .foregroundColor(.red)
-            }
-
-            Button(action: {
-                viewModel.submitEvent { success in
-                    if success { dismiss() }
-                }
-            }) {
-                if viewModel.isSubmitting {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                } else {
-                    Text("Submit")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.green)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-            }
-            .disabled(viewModel.isSubmitting || viewModel.title.isEmpty || viewModel.optionsText.isEmpty)
-
-            Spacer()
-        }
-        .padding()
-        .navigationTitle("New Event")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button("Cancel") {
-                    dismiss()
-                }
+                Text(error).foregroundColor(.red)
             }
         }
+        .navigationTitle("Create Event")
     }
 }

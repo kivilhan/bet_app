@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SetupDisplayNameView: View {
     @State private var name = ""
-    @EnvironmentObject var authManager: AuthManager
+    @EnvironmentObject var appManager: AppManager
 
     var body: some View {
         VStack(spacing: 20) {
@@ -23,7 +23,7 @@ struct SetupDisplayNameView: View {
 
             Button("Save") {
                 Task {
-                    try? await authManager.updateDisplayName(to: name)
+                    try? await appManager.updateDisplayName(to: name)
                 }
             }
             .padding()

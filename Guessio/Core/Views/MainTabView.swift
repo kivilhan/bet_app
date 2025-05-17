@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @EnvironmentObject var authManager: AuthManager
-    @EnvironmentObject var eventManager: EventManager
+    @EnvironmentObject var appManager: AppManager
 
     var body: some View {
         TabView {
@@ -33,15 +32,6 @@ struct MainTabView: View {
                     Label("Profile", systemImage: "person.crop.circle")
                 }
         }
-        .environmentObject(authManager)
-        .environmentObject(eventManager)
-    }
-}
-
-struct MainTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainTabView()
-            .environmentObject(AuthManager())
-            .environmentObject(EventManager())
+        .environmentObject(appManager)
     }
 }

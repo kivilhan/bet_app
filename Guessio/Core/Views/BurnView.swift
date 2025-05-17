@@ -1,15 +1,14 @@
 import SwiftUI
 
 struct BurnView: View {
-    @EnvironmentObject var eventManager: EventManager
-    @EnvironmentObject var authManager: AuthManager
+    @EnvironmentObject var appManager: AppManager
     @State private var amountToBurn = ""
     @State private var burnStatus: String?
 
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                if let user = authManager.guessioUser {
+                if let user = appManager.guessioUser {
                     Text("🔥 Burned: \(user.totalBurned)")
                     Text("🏆 Title: \(user.rank)")
 
@@ -21,12 +20,12 @@ struct BurnView: View {
                     Button("Burn") {
                         Task {
                             guard let amount = Int(amountToBurn),
-                                  let userId = authManager.firebaseUser?.uid else {
+                                  let userId = appManager.firebaseUser?.uid else {
                                 burnStatus = "Invalid input or user not loaded."
                                 return
                             }
 
-                            let success = await eventManager.burnBetbucks(from: userId, amount: amount)
+                            let success = await appManager.burnBetbucks(from: userId, amount: amount)
                             burnStatus = success ? "🔥 Burned \(amount) betbucks!" : "⚠️ Could not burn betbucks."
 
                             amountToBurn = ""

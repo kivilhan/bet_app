@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct WalletView: View {
-    @EnvironmentObject var authManager: AuthManager
+    @EnvironmentObject var appManager: AppManager
 
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                if let user = authManager.guessioUser {
+                if let user = appManager.guessioUser {
                     Text("💰 Betbucks: \(user.betbucks)")
                         .font(.title)
 

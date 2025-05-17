@@ -1,21 +1,12 @@
 import Foundation
-import FirebaseFirestore
-import FirebaseAuth
 
-@MainActor
 final class CreateEventViewModel: ObservableObject {
     @Published var title: String = ""
     @Published var optionsText: String = ""
-    @Published var isSubmitting = false
-    @Published var errorMessage: String?
+    @Published var isSubmitting: Bool = false
+    @Published var errorMessage: String? = nil
 
-    func submitEvent(completion: @escaping (Bool) -> Void) {
-        guard let currentUser = Auth.auth().currentUser else {
-            errorMessage = "You must be logged in to create an event."
-            completion(false)
-            return
-        }
-
+    func submitEvent(for userId: String, completion: @escaping (Bool) -> Void) {
         let options = optionsText
             .split(separator: ",")
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
@@ -29,23 +20,18 @@ final class CreateEventViewModel: ObservableObject {
 
         let newEvent = Event(
             title: title,
-            createdById: currentUser.uid,
+            createdById: userId,
             options: options
         )
 
         isSubmitting = true
         errorMessage = nil
 
-        let docRef = Firestore.firestore().collection("events").document(newEvent.id)
-        docRef.setData(newEvent.asDictionary) { [weak self] error in
-            Task { @MainActor in
-                self?.isSubmitting = false
-                if let error = error {
-                    self?.errorMessage = "Failed to save event: \(error.localizedDescription)"
-                    completion(false)
-                } else {
-                    completion(true)
-                }
+        Task {
+            await AppManager.shared.upsertEvent(newEvent)
+            await MainActor.run {
+                self.isSubmitting = false
+                completion(true)
             }
         }
     }
