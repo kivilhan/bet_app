@@ -15,9 +15,10 @@ struct ProfileView: View {
             VStack(spacing: 20) {
                 if let user = appManager.guessioUser {
                     Text("👤 Username: \(user.username)")
-                    Text("🏆 Title: \(user.rank)")
+                    Text(
+                        "🏆 Title: \(String(describing: user.leaderboardRank))"
+                    )
                     Text("💰 Betbucks: \(user.betbucks)")
-                    Text("🔥 Total Burned: \(user.totalBurned)")
                 } else {
                     ProgressView("Loading profile...")
                 }
@@ -68,12 +69,7 @@ struct ProfileView: View {
                 Text("ID: \(guessioUser.id)")
                 Text("Username: \(guessioUser.username)")
                 Text("Betbucks: \(guessioUser.betbucks)")
-                Text("Total Burned: \(guessioUser.totalBurned)")
-                if let lastClaimDate = guessioUser.lastClaimDate {
-                    Text("Last Claim: \(lastClaimDate.description)")
-                } else {
-                    Text("Last Claim: nil")
-                }
+                Text("Last Claim: \(guessioUser.lastClaimDate)")
             } else {
                 Text("No Guessio user loaded")
             }

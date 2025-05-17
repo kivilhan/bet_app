@@ -36,9 +36,3 @@ enum AuthState {
     case authenticated
     case unauthenticated
 }
-
-struct LeaderboardEntry: Identifiable {
-    let id: String  // user ID
-    let username: String
-    let totalBetbucks: Int
-}

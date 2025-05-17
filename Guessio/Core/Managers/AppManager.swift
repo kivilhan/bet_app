@@ -16,9 +16,11 @@ final class AppManager: NSObject, ObservableObject {
     private var userListener: ListenerRegistration?
     private var currentNonce: String?
 
-    @Published private(set) var authState: AuthState = .unauthenticated
+//    @Published private(set) var authState: AuthState = .unauthenticated
+    @Published var authState: AuthState = .unauthenticated
     @Published private(set) var firebaseUser: User?
-    @Published private(set) var guessioUser: GuessioUser?
+//    @Published private(set) var guessioUser: GuessioUser?
+    @Published var guessioUser: GuessioUser?
     @Published var events: [Event] = []
     @Published var products: [Product] = []
 
@@ -209,10 +211,11 @@ extension AppManager {
             // Create a new user
             let newUser = GuessioUser(
                 id: user.uid,
-                username: user.displayName ?? "guest",
-                lastClaimDate: nil,
+                username: user.displayName ?? "",
+                lastClaimDate: Date(),
                 betbucks: 1000,
-                totalBurned: 0,
+                totalAssets: 1000,
+                leaderboardRank: nil,
                 initialized: false
             )
             try docRef.setData(from: newUser)
@@ -235,34 +238,34 @@ extension AppManager {
         self.guessioUser = updatedUser
     }
 
-    func startUserListener(userId: String) {
-        stopUserListener()
-
-        let userRef = db.collection("users").document(userId)
-        userListener = userRef.addSnapshotListener { [weak self] snapshot, error in
-            guard let self = self else { return }
-
-            if let error = error {
-                print("User listener error: \(error.localizedDescription)")
-                return
-            }
-
-            guard let data = snapshot?.data() else {
-                print("No user data found.")
-                return
-            }
-
-            do {
-                let json = try JSONSerialization.data(withJSONObject: data)
-                let user = try JSONDecoder().decode(GuessioUser.self, from: json)
-                Task { @MainActor in
-                    self.guessioUser = user
-                }
-            } catch {
-                print("Failed to decode user: \(error.localizedDescription)")
-            }
-        }
-    }
+//    func startUserListener(userId: String) {
+//        stopUserListener()
+//
+//        let userRef = db.collection("users").document(userId)
+//        userListener = userRef.addSnapshotListener { [weak self] snapshot, error in
+//            guard let self = self else { return }
+//
+//            if let error = error {
+//                print("User listener error: \(error.localizedDescription)")
+//                return
+//            }
+//
+//            guard let data = snapshot?.data() else {
+//                print("No user data found.")
+//                return
+//            }
+//
+//            do {
+//                let json = try JSONSerialization.data(withJSONObject: data)
+//                let user = try JSONDecoder().decode(GuessioUser.self, from: json)
+//                Task { @MainActor in
+//                    self.guessioUser = user
+//                }
+//            } catch {
+//                print("Failed to decode user: \(error.localizedDescription)")
+//            }
+//        }
+//    }
 
     func stopUserListener() {
         userListener?.remove()
@@ -272,7 +275,7 @@ extension AppManager {
     // MARK: - Example Login Handler
     func handleLogin(for user: User) async {
         self.firebaseUser = user
-        self.startUserListener(userId: user.uid)
+//        self.startUserListener(userId: user.uid)
     }
 
     // MARK: - Logout
@@ -561,39 +564,70 @@ extension AppManager {
         }
     }
 
-    func fetchLeaderboard() async -> [LeaderboardEntry] {
-        var leaderboard: [LeaderboardEntry] = []
-        let usersSnapshot = try? await db.collection("users").getDocuments()
+    func retrieveLeaderboard() async -> [GuessioUser] {
+        var leaderboard: [GuessioUser] = []
+        guard let currentUserId = AppManager.shared.guessioUser?.id else {
+            print("No signed-in user available.")
+            return []
+        }
 
-        for userDoc in usersSnapshot?.documents ?? [] {
-            let userId = userDoc.documentID
-            let userData = userDoc.data()
-            let username = userData["username"] as? String ?? "Unknown"
-            let betbucks = userData["betbucks"] as? Int ?? 0
+        do {
+            // Fetch current user's userRef and betbucks
+            let userRef = db.collection("users").document(currentUserId)
+            let userSnap = try await userRef.getDocument()
+            guard let userData = userSnap.data(),
+                  let betbucks = userData["betbucks"] as? Int else { return [] }
 
-            var activeBetAmount = 0
-            let eventsSnapshot = try? await db.collection("events").getDocuments()
-            for eventDoc in eventsSnapshot?.documents ?? [] {
-                let eventId = eventDoc.documentID
-                let betSnapshot = try? await db
-                    .collection("events")
-                    .document(eventId)
-                    .collection("bets")
-                    .document(userId)
-                    .getDocument()
+            // Fetch tied up betbucks
+            let betsQuery = db.collection("bets").whereField("userId", isEqualTo: currentUserId)
+            let betsSnap = try await betsQuery.getDocuments()
+            let tiedUp = betsSnap.documents
+                .compactMap { $0.data()["amount"] as? Int }
+                .reduce(0, +)
 
-                if let betData = betSnapshot?.data(),
-                   let amount = betData["amount"] as? Int {
-                    activeBetAmount += amount
+            // Update totalAssets
+            let totalAssets = betbucks + tiedUp
+            Task { @MainActor in
+                do {
+                    try await userRef.updateData(["totalAssets": totalAssets])
+                    AppManager.shared.guessioUser?.totalAssets = totalAssets
+                } catch {
+                    print("Error updating total assets: \(error.localizedDescription)")
                 }
             }
 
-            let total = betbucks + activeBetAmount
-            leaderboard.append(LeaderboardEntry(id: userId, username: username, totalBetbucks: total))
+            // Count how many users have more
+            let rankQuery = db.collection("users")
+                .whereField("totalAssets", isGreaterThan: totalAssets)
+            let rankSnap = try await rankQuery.getDocuments()
+            let rank = rankSnap.count + 1
+
+            // Save rank to Firestore
+            Task { @MainActor in
+                do {
+                    try await userRef.updateData(["rank": rank])
+                    AppManager.shared.guessioUser?.leaderboardRank = rank
+                } catch {
+                    print("Error updating total assets: \(error.localizedDescription)")
+                }
+            }
+
+            // Fetch top 100 users
+            let topUsersQuery = db.collection("users")
+                .order(by: "totalAssets", descending: true)
+                .limit(to: 100)
+            let topSnap = try await topUsersQuery.getDocuments()
+
+            leaderboard = topSnap.documents.compactMap { doc -> GuessioUser? in
+                try? doc.data(as: GuessioUser.self)
+            }
+        } catch {
+            print("Error retrieving leaderboard: \(error.localizedDescription)")
         }
 
-        return leaderboard.sorted { $0.totalBetbucks > $1.totalBetbucks }
+        return leaderboard
     }
+
 }
 //MARK: - Store Operations
 extension AppManager {

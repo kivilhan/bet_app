@@ -21,17 +21,16 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Wallet", systemImage: "creditcard")
                 }
-
-            BurnView()
-                .tabItem {
-                    Label("Burn", systemImage: "flame")
-                }
+//
+//            BurnView()
+//                .tabItem {
+//                    Label("Burn", systemImage: "flame")
+//                }
 
             ProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "person.crop.circle")
                 }
         }
-        .environmentObject(appManager)
     }
 }

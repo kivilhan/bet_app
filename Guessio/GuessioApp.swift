@@ -35,7 +35,21 @@ struct GuessioApp: App {
     }
 }
 
-#Preview {
-    MainTabView()
-        .environmentObject(AppManager.shared) // ✅ Use the singleton instance
+struct MainTabView_Previews: PreviewProvider {
+    static var previews: some View {
+        let mockManager = AppManager()
+        mockManager.authState = .authenticated
+        mockManager.guessioUser = GuessioUser(
+            id: "mock-id",
+            username: "MockUser",
+            lastClaimDate: Date(),
+            betbucks: 1200,
+            totalAssets: 1700,
+            leaderboardRank: 10,
+            initialized: true
+        )
+
+        return MainTabView()
+            .environmentObject(mockManager)
+    }
 }
